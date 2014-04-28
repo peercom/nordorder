@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   
   has_many :carts 
-  attr_accessible :username, :email, :store, :address, :password, :password_confirmation, :locked, :admin
+  attr_accessible :username, :email, :store, :address, :password, :password_confirmation, :locked, :admin, :fulfillment
   
   # Use friendly_id on Users
   extend FriendlyId
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   # :username
   validates :username, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /\A[a-zA-Z0-9]*\z/, on: :create, message: "can only contain letters and digits"
-  validates :username, length: { in: 4..10 }
+  validates :username, length: { in: 4..14 }
   # :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   

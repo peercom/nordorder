@@ -12,6 +12,11 @@ Nordorder::Application.routes.draw do
     resources :products
   end
   
+  namespace :fulfillment do
+    root "base#index"
+    resources :carts
+  end
+  
   resources :products
   resources :carts do
     patch :confirm, on: :member

@@ -27,7 +27,15 @@ class ApplicationController < ActionController::Base
   
   # Redirects on successful sign in
   def after_sign_in_path_for(resource)
-    store_path
+    unless current_user.admin? || current_user.fulfillment?
+      store_path
+    else
+      if current_user.admin? 
+        admin_root_path
+      else
+        fulfillment_root_path
+      end
+    end
   end
   
   # Auto-sign out locked users
@@ -42,6 +50,15 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :reject_locked!
+  
+  def require_fulfillment_user!
+    authenticate_user!
+    
+    if current_user && !current_user.fulfillment?
+      redirect_to root_path
+    end
+  end
+  helper_method :require_fulfillment_user!
   
   # Only permits admin users
   def require_admin!

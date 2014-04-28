@@ -1,6 +1,10 @@
 class Cart < ActiveRecord::Base
   attr_accessible :line_items_attributes
   
+  STATE_OPEN = 0
+  STATE_PROCESSING = 1
+  STATE_FULFILLED = 2
+  
   belongs_to :user
   has_many :line_items
   accepts_nested_attributes_for :line_items, reject_if: lambda {|attributes| attributes['quantity'].blank?}
@@ -15,6 +19,14 @@ class Cart < ActiveRecord::Base
       sum += item.total_price
     end
     sum
+  end
+  
+  def self.unprocessed
+    Cart.where(:status => Cart::STATE_OPEN).where(:confirmed => true)
+  end
+  
+  def self.processing
+    Cart.where(:status => Cart::STATE_PROCESSING).where(:confirmed => true)
   end
   
   def self.latest(number)

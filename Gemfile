@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.5.3'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'protected_attributes'
 gem 'money-rails'
+gem 'prawn'
 
 group :doc do
   gem 'sdoc', require: false

@@ -1,0 +1,46 @@
+<h1>Fulfillment<small>Home</small></h1>
+
+<p>Downloading the proforma-invoice PDF changes the orders state to "processing". Please make sure that you mark all shipped orders as "processed"</p>
+<p>
+You currently have <%= Cart.unprocessed.count %> unprocessed orders. <%= Cart.processing.count %> orders are currently being processed.
+</p>
+
+<h3>Unprocessed Orders</h3>
+<table class="table table-striped">
+	<tr>
+		<th>Order #</th>
+		<th>Store</th>
+		<th>Address</th>
+		<th>Item count</th>
+		<th>Download</th>
+	</tr>
+	<% @unprocessed_orders.each do |new_order| %>
+		<tr>
+			<td>#<%= new_order.id %></td>
+			<td><%= new_order.user.store %></td>
+			<td><%= new_order.user.address %></td>
+			<td><%= new_order.number_of_items %></td>
+			<td><%= link_to "download PDF", fulfillment_cart_path(new_order, :format => 'pdf')%></td>
+		</tr>
+	<% end %>
+</table>
+
+<h3>Orders being processed</h2>
+<table class="table table-striped">
+	<tr>
+		<th>Order #</th>
+		<th>Store</th>
+		<th>Address</th>
+		<th>Item count</th>
+		<th>Fulfilled</th>
+	</tr>
+	<% @processing_orders.each do |pending_order| %>
+		<tr>
+			<td>#<%= pending_order.id %></td>
+			<td><%= pending_order.user.store %></td>
+			<td><%= pending_order.user.address %></td>
+			<td><%= pending_order.number_of_items %></td>
+			<td>Mark as fulfilled</td>
+		</tr>
+	<% end %>
+</table>

@@ -1,7 +1,7 @@
 <h1>Please verify your order</h1>
 
 <p>
-	You are about to order the following items for <%= current_user.store %>:
+	<b>You are about to order the following items for <%= current_user.store %>:</b>
 </p>
 
 <table class="table table-striped">
@@ -32,6 +32,8 @@
 		<td><%= humanized_money_with_symbol @cart.total_value%></td>
 	</tr>
 </table>
+
+<p>Please confirm your order by checking "confirmed" below. Place order now will create an order immediatly, so please check for any mistakes prior to submitting this form.</p>
 
 <%= form_for @cart, url: confirm_cart_path(@cart) do |f| %>
 	<%= f.hidden_field :id %>

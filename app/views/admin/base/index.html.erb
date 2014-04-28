@@ -8,7 +8,7 @@
   </div>
   
   <div class="col-sm-4">
-    <h3>Last Orders <small>- <%= "#{Cart.today.count } today"%></small></h3>
+    <h3>Latest Orders <small>- <%= "#{Cart.today.count } today"%></small></h3>
     <ul class="list-unstyled">
       <% @last_orders.each do |cart| %>
       <li class="list-padded-bottom">
@@ -20,7 +20,7 @@
   </div>
   
   <div class="col-sm-4">
-    <h3>Last Sign Ins</h3>
+    <h3>Latest Sign Ins</h3>
     <ul class="list-unstyled">
       <% @last_signins.each do |user| %>
       <li class="list-padded-bottom">

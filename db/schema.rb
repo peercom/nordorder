@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428111553) do
+ActiveRecord::Schema.define(version: 20140428132613) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.boolean  "confirmed",  default: false
+    t.integer  "status",     default: 0
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140428111553) do
     t.datetime "updated_at"
     t.string   "store"
     t.string   "address"
+    t.boolean  "fulfillment",            default: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
