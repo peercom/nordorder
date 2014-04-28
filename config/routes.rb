@@ -1,7 +1,7 @@
 Nordorder::Application.routes.draw do
   root "pages#home"    
   get "home", to: "pages#home", as: "home"
-  get "inside", to: "pages#inside", as: "inside"
+  get "store", to: "pages#store", as: "store"
   
     
   devise_for :users
@@ -11,5 +11,8 @@ Nordorder::Application.routes.draw do
     resources :users
     resources :products
   end
+  
+  resources :products
+  resources :carts
   
 end

@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  
+  has_many :carts 
+  
   # Use friendly_id on Users
   extend FriendlyId
   friendly_id :friendify, use: :slugged

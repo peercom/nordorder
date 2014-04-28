@@ -1,0 +1,45 @@
+<% title("Edit product") %>
+<h1>Edit Product <small>Admin</small></h1>
+<p><%= link_to "Back to Products", admin_products_path %></p>
+
+<%= form_for([:admin, @product], :html => { :role => "form" }) do |f| %>
+	<div class="form-group">
+		<%= f.label :sku %>
+		<div class="row">
+        	<div class="col-sm-6">
+				<%= f.text_field :sku %>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :name %>
+		<div class="row">
+        	<div class="col-sm-6">
+				<%= f.text_field :name %>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :price %>
+		<div class="row">
+        	<div class="col-sm-6">
+				<%= f.text_field :price, data: { role: 'money', a_sep: '.', a_dec: ',' } %>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :desc %>
+		<div class="row">
+        	<div class="col-sm-6">
+				<%= f.text_area :desc %>
+			</div>
+		</div>
+	</div>
+	
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.submit "Save Product", class: "btn btn-danger" %>
+      </div>
+    </div>
+	
+<% end %>
