@@ -10,8 +10,23 @@ class Cart < ActiveRecord::Base
   end
   
   def total_value
-    #TODO implement
-    10
+    sum = Money.new(0)
+    self.line_items.each do |item|
+      sum += item.total_price
+    end
+    sum
+  end
+  
+  def self.latest(number)
+    Cart.where(:confirmed => true).order(created_at: :desc).limit(number) 
+  end
+  
+  def self.today
+    where("created_at >= ?", Time.zone.now.beginning_of_day).where(:confirmed => true)
+  end
+  
+  def self.yesterday
+    where("created_at >= ? AND created_at <= ?", Time.zone.now.beginning_of_day - 1.day, Time.zone.now.end_of_day - 1.day).where(:confirmed => true)
   end
   
 end

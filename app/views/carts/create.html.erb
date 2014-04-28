@@ -1,5 +1,8 @@
 <h1>Please verify your order</h1>
-You are about to order the following items:
+
+<p>
+	You are about to order the following items for <%= current_user.store %>:
+</p>
 
 <table class="table table-striped">
 	<tr>
@@ -26,6 +29,15 @@ You are about to order the following items:
 		<td></td>
 		<td></td>
 		<td></td>
-		<td><%= @cart.total_value%></td>
+		<td><%= humanized_money_with_symbol @cart.total_value%></td>
 	</tr>
 </table>
+
+<%= form_for @cart, url: confirm_cart_path(@cart) do |f| %>
+	<%= f.hidden_field :id %>
+	<%= f.label :confirmed %>
+	<%= f.check_box :confirmed %>
+	<p>
+		<%= f.submit "Place order now", class: "btn btn-danger" %>
+	</p>
+<% end %>

@@ -13,6 +13,8 @@ Nordorder::Application.routes.draw do
   end
   
   resources :products
-  resources :carts
+  resources :carts do
+    patch :confirm, on: :member
+  end
   
 end

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
   has_many :carts 
+  attr_accessible :username, :email, :store, :address, :password, :password_confirmation, :locked, :admin
   
   # Use friendly_id on Users
   extend FriendlyId
@@ -17,8 +18,8 @@ class User < ActiveRecord::Base
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable
          
   # Pagination
   paginates_per 100

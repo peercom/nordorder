@@ -15,8 +15,27 @@ class Admin::UsersController < Admin::BaseController
     redirect_to edit_admin_user_path(params[:id])
   end
   
+  def new 
+    @user = User.new
+  end
+  
   def edit
   end
+  
+  def create
+    @user = User.new(params[:user])
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to(admin_users_path, :notice => 'User was successfully created.') }
+        format.xml  { render :xml => @user, :status => :created, :location => @user }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
   
   def update
     old_username = @user.username
@@ -25,6 +44,8 @@ class Admin::UsersController < Admin::BaseController
     new_params[:email] = new_params[:email].strip
     
     @user.username = new_params[:username]
+    @user.address = new_params[:address]
+    @user.store = new_params[:store]
     @user.email = new_params[:email]
     @user.password = new_params[:password] if new_params[:password].strip.length > 0
     @user.password_confirmation = new_params[:password_confirmation] if new_params[:password_confirmation].strip.length > 0
@@ -35,7 +56,6 @@ class Admin::UsersController < Admin::BaseController
     end
     
     if @user.valid?
-      @user.skip_reconfirmation!
       @user.save
       redirect_to admin_users_path, notice: "#{@user.username} updated."
     else
@@ -58,6 +78,8 @@ class Admin::UsersController < Admin::BaseController
     params.require(:user).permit(
     :username,
     :email,
+    :store,
+    :address,
     :password,
     :password_confirmation,
     :admin,

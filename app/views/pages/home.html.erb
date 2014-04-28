@@ -1,8 +1,11 @@
 <% title("Home Page") %>
 <h1>Nordstrom Order Portal</h1>
-<p>Please login using your storenumber and password to place orders</p>
-
-<%= link_to "Proceed to the login page", new_user_session_path %>
-
+<% if !user_signed_in? %>
+	<p>Please login using your storenumber and password to place orders</p>
+	<p><%= link_to "Proceed to the login page", new_user_session_path %></p>
+<% else %>
+	<p>You are already signed in as <%= current_user.username %>.</p>
+	<p><%= link_to "Click here to place an order", store_path %></p>
+<% end %>
 <h2>Help</h2>
 If you forgot or have not yet received any login information, please contact Beverage Innovations. 
