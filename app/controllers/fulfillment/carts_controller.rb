@@ -1,16 +1,33 @@
-class Fulfillment::CartsController < Admin::BaseController
-  
-  before_filter :require_fulfillment_user!
+class Fulfillment::CartsController < Fulfillment::BaseController
   
   def show
-    @cart = Cart(params[:id])
+    @cart = Cart.find(params[:id])
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = ProformaPdf.new(@cart)
+        pdf = Fulfillment::ProformaPdf.new(@cart)
         send_data pdf.render, filename: 'proforma.pdf', type: 'application/pdf'
+        #@cart.update_attribute :status, Cart::STATE_PROCESSING
       end
     end
+  end
+  
+  def mark_as_processing
+    @cart = Cart.find(params[:id])
+    @cart.update_attribute :status, Cart::STATE_PROCESSING
+    redirect_to fulfillment_root_path
+  end
+  
+  def revert
+    @cart = Cart.find(params[:id])
+    @cart.update_attribute :status, Cart::STATE_OPEN
+    redirect_to fulfillment_root_path
+  end
+  
+  def mark_as_fulfilled
+    @cart = Cart.find(params[:id])
+    @cart.update_attribute :status, Cart::STATE_FULFILLED
+    redirect_to fulfillment_root_path
   end
   
 end

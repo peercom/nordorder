@@ -14,7 +14,11 @@ Nordorder::Application.routes.draw do
   
   namespace :fulfillment do
     root "base#index"
-    resources :carts
+    resources :carts do
+      patch :revert, on: :member
+      patch :mark_as_processing, on: :member
+      patch :mark_as_fulfilled, on: :member
+    end
   end
   
   resources :products

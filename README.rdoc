@@ -26,3 +26,16 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+
+== TODO
+
+* Mail daily summary of orders along with detailed CSV-File
+
+* complete PDF
+
+* change state of order after downloading PDF and move item to second table (AJAX)
+
+* Info mail for fulfillment containing number of unprocessed orders and link to order summary
+

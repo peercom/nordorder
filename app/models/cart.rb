@@ -7,7 +7,7 @@ class Cart < ActiveRecord::Base
   
   belongs_to :user
   has_many :line_items
-  accepts_nested_attributes_for :line_items, reject_if: lambda {|attributes| attributes['quantity'].blank?}
+  accepts_nested_attributes_for :line_items, reject_if: lambda {|attributes| attributes['quantity'].to_i == 0}
   
   def number_of_items
     self.line_items.sum(:quantity)

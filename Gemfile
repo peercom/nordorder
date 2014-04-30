@@ -11,6 +11,7 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'protected_attributes'
 gem 'money-rails'
 gem 'prawn'
+gem 'whenever', :require => false
 
 group :doc do
   gem 'sdoc', require: false

@@ -1,4 +1,5 @@
 class Fulfillment::BaseController < ApplicationController
+  
   before_filter :require_fulfillment_user!
   
   def index

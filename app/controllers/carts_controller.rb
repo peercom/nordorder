@@ -6,7 +6,7 @@ class CartsController < ApplicationController
     p @cart
     respond_to do |format|
       if @cart.save
-        format.html { render(:notice => 'Product was successfully created.') }
+        format.html { render(:notice => 'Cart was successfully created.') }
         format.xml  { render :xml => @cart, :status => :created, :location => @cart }
       else
         format.html { render :action => "new" }
@@ -20,7 +20,7 @@ class CartsController < ApplicationController
     if params[:cart][:confirmed] 
       @cart.update_attribute :confirmed, true
       CartMailer.fulfillment_email(@cart).deliver
-      redirect_to(store_path, :notice => 'Order was successfully placed.')    
+      redirect_to(store_path, :notice => 'Order was placedsuccessfully.')    
     end
   end
   

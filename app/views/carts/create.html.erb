@@ -22,14 +22,14 @@
 	</tr>
 <% end %>
 	<tr>
-		<td span=5><em>Totals</em></td>
+		<td colspan="5"><em>Totals</em></td>
 	</tr>
 	<tr>
-		<td><%= @cart.number_of_items %></td>
+		<td><b><%= @cart.number_of_items %></b></td>
 		<td></td>
 		<td></td>
 		<td></td>
-		<td><%= humanized_money_with_symbol @cart.total_value%></td>
+		<td><b><%= humanized_money_with_symbol @cart.total_value%></b></td>
 	</tr>
 </table>
 

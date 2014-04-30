@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   monetize :price_cents
   
   def self.products_for_sale
-    find(:all, :order => 'sku')
+    all.order('sku')
   end
   
   def self.search_and_order(search, page_number)
