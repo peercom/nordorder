@@ -36,10 +36,9 @@
 <p>Please confirm your order by checking "confirmed" below. Place order now will create an order immediatly, so please check for any mistakes prior to submitting this form.</p>
 
 <%= form_for @cart, url: confirm_cart_path(@cart) do |f| %>
-	<%= f.hidden_field :id %>
 	<%= f.label :confirmed %>
 	<%= f.check_box :confirmed %>
 	<p>
-		<%= f.submit "Place order now", class: "btn btn-danger" %>
+		<%= f.submit "Place order now", class: "btn btn-danger", :id => "submit", :disabled => true %>
 	</p>
 <% end %>

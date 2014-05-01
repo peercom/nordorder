@@ -16,12 +16,12 @@ class CartsController < ApplicationController
   end
   
   def confirm
-    @cart = Cart.find(params[:cart][:id])
-    if params[:cart][:confirmed] 
+    @cart = Cart.find(params[:id])
+    if params[:cart][:confirmed] == "1"
       @cart.update_attribute :confirmed, true
       CartMailer.fulfillment_email(@cart).deliver
-      redirect_to(store_path, :notice => 'Order was placedsuccessfully.')    
-    end
+      redirect_to(store_path, :notice => 'Order was placed successfully.')
+    end    
   end
   
   private

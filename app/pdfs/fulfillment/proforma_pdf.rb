@@ -3,14 +3,29 @@ class Fulfillment::ProformaPdf < Prawn::Document
   def initialize(order)
     super()
     @order = order
+    logo_left
+    header_left
     header_right
     table_content
   end
   
+  def logo_left
+    bounding_box([0,710], :width => 200, :height => 80) do
+      image "#{Rails.root}/public/bi_logo.png"
+    end
+  end
+  
+  def header_left
+    bounding_box([0, 550], :width => 270, :height => 100) do
+      text "Ship To:", size: 15, style: :bold
+      text "Nordstrom #{@order.user.store}"
+      text "#{@order.user.address}"
+    end
+  end
+  
   def header_right
-    y_position = cursor - 20
-    bounding_box([400, y_position], :width => 270, :height => 100) do
-      text "Proforma invoice", size: 15, style: :bold
+    bounding_box([400, 550], :width => 270, :height => 100) do
+      text "Proforma", size: 15, style: :bold
       text "Order number: ##{@order.id}"
     end
   end
