@@ -4,7 +4,8 @@ lock '3.2.1'
 set :application, 'nordorder'
 #set :repo_url, 'git@example.com:me/my_repo.git'
 
-set :repo_url, "."
+set :repo_url, "./.git"
+set :local_repository, './.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
