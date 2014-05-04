@@ -4,8 +4,8 @@ lock '3.2.1'
 set :application, 'nordorder'
 #set :repo_url, 'git@example.com:me/my_repo.git'
 
-set :repo_url, "./.git"
-set :local_repository, './.git'
+set :repo_url, "git@github.com:peercom/nordorder.git"
+#set :local_repository, './.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -13,7 +13,7 @@ set :local_repository, './.git'
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/home/deploy/sites/nordstrom'
 
-set :deploy_via, :copy
+#set :deploy_via, :copy
 
 # Default value for :scm is :git
 set :scm, :git
