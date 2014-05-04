@@ -12,21 +12,38 @@ u = User.new(
 u.skip_confirmation!
 u.save!
 
+p = Product.new(
+    sku: "4CD2300".
+    name: "Vanilla Chai - Retail",
+    price: 2300,
+    desc: "6 x 16 oz cans"
+)
 
+p.save!
 
-# Test user accounts
-(1..5).each do |i|
-  u = User.new(
-      username: "user#{i}",
-      email: "user#{i}@example.com",
-      password: "1234",
-      password_confirmation: "1234"
-  )
-  u.skip_confirmation!
-  u.save!
+p = Product.new(
+    sku: "4CD2100".
+    name: "Spiced Chai - Retail",
+    price: 2300,
+    desc: "6 x 16 oz cans"
+)
 
-  puts "#{i} test users created..." if (i % 5 == 0)
+p.save!
 
-end
-  
+p = Product.new(
+    sku: "3CD2300".
+    name: "Vanilla Chai - Bulk",
+    price: 4500,
+    desc: "5 x 3 lb bags"
+)
 
+p.save!
+
+p = Product.new(
+    sku: "4CD2300".
+    name: "Spiced Chai - Bulk",
+    price: 4500,
+    desc: "5 x 3 lb bags"
+)
+
+p.save!

@@ -12,6 +12,10 @@ gem 'protected_attributes'
 gem 'money-rails'
 gem 'prawn'
 gem 'whenever', :require => false
+gem 'sidekiq'
+gem 'groupdate'
+gem 'chartkick'
+gem 'mysql2'
 
 group :doc do
   gem 'sdoc', require: false
@@ -19,7 +23,6 @@ end
 
 # development gems
 group :development, :test do
-  gem 'sqlite3', '~> 1.3.8'    # dev & test database
   gem 'figaro', '~> 0.7.0'     # env variables
   gem 'capistrano'
 end

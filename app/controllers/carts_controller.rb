@@ -19,7 +19,8 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     if params[:cart][:confirmed] == "1"
       @cart.update_attribute :confirmed, true
-      CartMailer.fulfillment_email(@cart).deliver
+      #CartMailer.fulfillment_email(@cart).deliver
+      MailWorker.perform_async(@cart.id)
       redirect_to(store_path, :notice => 'Order was placed successfully.')
     end    
   end
