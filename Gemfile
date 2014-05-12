@@ -28,7 +28,6 @@ group :development, :test do
 end
 
 group :production do
-  ruby '1.9.3'
   gem 'mysql'
 end
 
