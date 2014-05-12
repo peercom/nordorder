@@ -26,6 +26,7 @@ group :development, :test do
   gem 'figaro', '~> 0.7.0'     # env variables
   gem 'capistrano'
   gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :production do
