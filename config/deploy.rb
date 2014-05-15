@@ -24,6 +24,10 @@ set :scm, :git
 # Default value for :log_level is :debug
 set :log_level, :debug
 
+set :rvm_ruby_version, '2.0.0'
+set :rvm_type, :system
+
+
 # Default value for :pty is false
 # set :pty, true
 
