@@ -44,5 +44,5 @@
 </div>
 
 <div class="row">
-	<%= line_chart Cart.group_by_day(:created_at).count %>
+	<%= line_chart Cart.group_by_day(:created_at).count, :discrete => true %>
 </div>
