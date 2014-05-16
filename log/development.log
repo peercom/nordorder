@@ -32328,3 +32328,189 @@ Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-16 17:53:40
   [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 2]]
   [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 5]]
   [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) AS count_all, DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR) AS day FROM `carts` WHERE (`created_at` IS NOT NULL) GROUP BY DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR)[0m
+
+
+Started GET "/admin" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+Processing by Admin::BaseController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`confirmed` = 1 ORDER BY `carts`.`created_at` DESC LIMIT 10
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE (admin = 0 AND locked = 0)[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `products`[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `carts` WHERE (created_at >= '2014-05-16 00:00:00') AND `carts`.`confirmed` = 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT id, username, slug, last_sign_in_at FROM `users` ORDER BY `users`.`last_sign_in_at` DESC LIMIT 10
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) AS count_all, DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR) AS day FROM `carts` WHERE (`created_at` IS NOT NULL) GROUP BY DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR)[0m
+  Rendered admin/base/index.html.erb within layouts/application (17.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 37ms (Views: 29.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+
+
+Started GET "/assets/autoNumeric.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:34 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/jsapi.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/money_fields.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/validate_checkbox.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-16 18:05:35 +0200
+
+
+Started GET "/admin" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+Processing by Admin::BaseController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`confirmed` = 1 ORDER BY `carts`.`created_at` DESC LIMIT 10[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users` WHERE (admin = 0 AND locked = 0)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE (created_at >= '2014-05-16 00:00:00') AND `carts`.`confirmed` = 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT id, username, slug, last_sign_in_at FROM `users` ORDER BY `users`.`last_sign_in_at` DESC LIMIT 10[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) AS count_all, DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR) AS day FROM `carts` WHERE (`created_at` >= '2014-04-16 00:00:00' AND `created_at` <= '2014-05-16 16:06:56') GROUP BY DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR)
+  Rendered admin/base/index.html.erb within layouts/application (86.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 104ms (Views: 96.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/autoNumeric.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/affix.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/alert.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/carousel.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/dropdown.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/collapse.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/button.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/tab.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/transition.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/scrollspy.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/modal.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/tooltip.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap/popover.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/bootstrap.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/jsapi.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/chartkick.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/money_fields.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/validate_checkbox.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-16 18:06:56 +0200
