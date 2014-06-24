@@ -41,4 +41,9 @@ class Cart < ActiveRecord::Base
     where("created_at >= ? AND created_at <= ?", Time.zone.now.beginning_of_day - 1.day, Time.zone.now.end_of_day - 1.day).where(:confirmed => true)
   end
   
+  def nth_order_for_day
+    orders_for_day_and_user = Cart.where("user_id = ? AND created_at >= ? AND created_at <= ?", self.user_id, self.created_at.beginning_of_day, self.created_at.end_of_day)
+    orders_for_day_and_user.to_a.index self
+  end
+  
 end

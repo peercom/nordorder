@@ -36740,3 +36740,1173 @@ Processing by Admin::UsersController#edit as HTML
   Rendered layouts/_messages.html.erb (0.1ms)
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 23ms (Views: 19.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2014-06-24 17:51:03 +0200
+Processing by Admin::BaseController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.9ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`confirmed` = 1 ORDER BY `carts`.`created_at` DESC LIMIT 10
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE (admin = 0 AND locked = 0)[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `storegroups`
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT id, username, slug, last_sign_in_at FROM `users` ORDER BY `users`.`last_sign_in_at` DESC LIMIT 10[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) AS count_all, DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR) AS day FROM `carts` WHERE (`created_at` >= '2014-05-24 00:00:00' AND `created_at` <= '2014-06-24 15:51:03') GROUP BY DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR)
+  Rendered admin/base/index.html.erb within layouts/application (25.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 58ms (Views: 35.0ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2014-06-24 18:04:40 +0200
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` ORDER BY `users`.`admin` DESC, `users`.`username` ASC LIMIT 100 OFFSET 0[0m
+  Rendered admin/users/index.html.erb within layouts/application (8.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 26ms (Views: 23.0ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-24 18:35:12 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"EFM77gDeGuKr0m68MNqgWLlKnQV6bH5nBEjR7zgkdME="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 57ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-24 18:35:12 +0200
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:35:14 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 18ms (Views: 16.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:35:20 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3H35nHZQWvT2F/hlBB0RnvdcD79EX3lelx2VqlF/488=", "user"=>{"username"=>"fulfillment", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'fulfillment' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 84ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3H35nHZQWvT2F/hlBB0RnvdcD79EX3lelx2VqlF/488=", "user"=>{"username"=>"fulfillment", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+WARNING: Can't mass-assign protected attributes for User: remember_me
+
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 100ms (Views: 15.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:35:30 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3H35nHZQWvT2F/hlBB0RnvdcD79EX3lelx2VqlF/488=", "user"=>{"username"=>"fulfillment", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'fulfillment' ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `users` SET `current_sign_in_at` = '2014-06-24 16:35:31', `sign_in_count` = 2, `updated_at` = '2014-06-24 16:35:31' WHERE `users`.`id` = 4
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/fulfillment
+Completed 302 Found in 91ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/fulfillment" for 127.0.0.1 at 2014-06-24 18:35:31 +0200
+Processing by Fulfillment::BaseController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 2[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 3[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1
+  Rendered fulfillment/base/index.html.erb within layouts/application (23.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 44ms (Views: 36.0ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:35:41 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.4ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 58ms (Views: 0.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:43:06 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.5ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 57ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/pdfs/fulfillment/proforma_pdf.rb:40:in `block in bill_to'
+  app/pdfs/fulfillment/proforma_pdf.rb:38:in `bill_to'
+  app/pdfs/fulfillment/proforma_pdf.rb:9:in `initialize'
+  app/controllers/fulfillment/carts_controller.rb:8:in `new'
+  app/controllers/fulfillment/carts_controller.rb:8:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.2ms)
+
+
+Started GET "/fulfillment" for 127.0.0.1 at 2014-06-24 18:43:33 +0200
+Processing by Fulfillment::BaseController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 2[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 3[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1
+  Rendered fulfillment/base/index.html.erb within layouts/application (18.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 36ms (Views: 27.9ms | ActiveRecord: 5.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-24 18:43:48 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"1RAjt5t3BA8+DNoEn7URX1rLwK186b3O5lf3/cb36TE="}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 60ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-24 18:43:48 +0200
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:43:49 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:43:56 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ukKY7biTvQjae2iwhc71saM1sKNlw4erQ+/Cv/m2TTQ=", "user"=>{"username"=>"admin", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`username` = 'admin' ORDER BY `users`.`id` ASC LIMIT 1
+Completed 401 Unauthorized in 87ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ukKY7biTvQjae2iwhc71saM1sKNlw4erQ+/Cv/m2TTQ=", "user"=>{"username"=>"admin", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+WARNING: Can't mass-assign protected attributes for User: remember_me
+
+  Rendered devise/shared/_links.erb (0.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.1ms)
+  Rendered layouts/_navigation.html.erb (0.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 103ms (Views: 15.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:44:01 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ukKY7biTvQjae2iwhc71saM1sKNlw4erQ+/Cv/m2TTQ=", "user"=>{"username"=>"admin", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'admin' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2014-06-24 14:39:59', `current_sign_in_at` = '2014-06-24 16:44:01', `sign_in_count` = 7, `updated_at` = '2014-06-24 16:44:01' WHERE `users`.`id` = 1[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 92ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2014-06-24 18:44:01 +0200
+Processing by Admin::BaseController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.5ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`confirmed` = 1 ORDER BY `carts`.`created_at` DESC LIMIT 10
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE (admin = 0 AND locked = 0)[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `storegroups`
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT id, username, slug, last_sign_in_at FROM `users` ORDER BY `users`.`last_sign_in_at` DESC LIMIT 10[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) AS count_all, DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR) AS day FROM `carts` WHERE (`created_at` >= '2014-05-24 00:00:00' AND `created_at` <= '2014-06-24 16:44:01') GROUP BY DATE_ADD(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(DATE_SUB(`created_at`, INTERVAL 0 HOUR), '+00:00', 'Etc/UTC'), '%Y-%m-%d 00:00:00'), 'Etc/UTC', '+00:00'), INTERVAL 0 HOUR)
+  Rendered admin/base/index.html.erb within layouts/application (30.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 36.4ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2014-06-24 18:44:04 +0200
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` ORDER BY `users`.`admin` DESC, `users`.`username` ASC LIMIT 100 OFFSET 0[0m
+  Rendered admin/users/index.html.erb within layouts/application (8.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 25ms (Views: 21.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/admin/users/user-admin" for 127.0.0.1 at 2014-06-24 18:44:05 +0200
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"user-admin"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'user-admin' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/admin/users/user-admin/edit
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/users/user-admin/edit" for 127.0.0.1 at 2014-06-24 18:44:05 +0200
+Processing by Admin::UsersController#edit as HTML
+  Parameters: {"id"=>"user-admin"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'user-admin' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.3ms)[0m  SELECT `storegroups`.* FROM `storegroups`
+  Rendered admin/users/edit.html.erb within layouts/application (57.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 75ms (Views: 71.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2014-06-24 18:44:10 +0200
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` ORDER BY `users`.`admin` DESC, `users`.`username` ASC LIMIT 100 OFFSET 0[0m
+  Rendered admin/users/index.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 25ms (Views: 21.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/admin/users/nord002" for 127.0.0.1 at 2014-06-24 18:44:11 +0200
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"nord002"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'nord002' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/admin/users/nord002/edit
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/users/nord002/edit" for 127.0.0.1 at 2014-06-24 18:44:11 +0200
+Processing by Admin::UsersController#edit as HTML
+  Parameters: {"id"=>"nord002"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'nord002' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.3ms)[0m  SELECT `storegroups`.* FROM `storegroups`
+  Rendered admin/users/edit.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 19.9ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/admin/users/nord002" for 127.0.0.1 at 2014-06-24 18:44:14 +0200
+Processing by Admin::UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GJMtcE9zvxBKbFfOpAqh3o5BhTz4kUW+mEcoD36NtD0=", "user"=>{"username"=>"nord002", "email"=>"nord002@example.com", "store"=>"nord002", "address"=>"nord002", "storegroup_id"=>"1", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "locked"=>"0", "admin"=>"0", "fulfillment"=>"0"}, "commit"=>"Update User", "id"=>"nord002"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`slug` = 'nord002' ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE (`users`.`username` = 'nord002' AND `users`.`id` != 3) LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE (`users`.`username` = 'nord002' AND `users`.`id` != 3) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 10ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2014-06-24 18:44:14 +0200
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` ORDER BY `users`.`admin` DESC, `users`.`username` ASC LIMIT 100 OFFSET 0[0m
+  Rendered admin/users/index.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 25ms (Views: 21.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/admin/users/nord001" for 127.0.0.1 at 2014-06-24 18:44:15 +0200
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"nord001"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'nord001' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/admin/users/nord001/edit
+Completed 302 Found in 6ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/admin/users/nord001/edit" for 127.0.0.1 at 2014-06-24 18:44:15 +0200
+Processing by Admin::UsersController#edit as HTML
+  Parameters: {"id"=>"nord001"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'nord001' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.3ms)[0m  SELECT `storegroups`.* FROM `storegroups`
+  Rendered admin/users/edit.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 19.1ms | ActiveRecord: 0.9ms)
+
+
+Started PATCH "/admin/users/nord001" for 127.0.0.1 at 2014-06-24 18:44:18 +0200
+Processing by Admin::UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GJMtcE9zvxBKbFfOpAqh3o5BhTz4kUW+mEcoD36NtD0=", "user"=>{"username"=>"nord001", "email"=>"nord001@example.com", "store"=>"Seattle", "address"=>"500 Pine Street #500, Seattle, WA 98101-1742", "storegroup_id"=>"2", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "locked"=>"0", "admin"=>"0", "fulfillment"=>"0"}, "commit"=>"Update User", "id"=>"nord001"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`slug` = 'nord001' ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE (`users`.`username` = 'nord001' AND `users`.`id` != 2) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE (`users`.`username` = 'nord001' AND `users`.`id` != 2) LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `users` SET `storegroup_id` = 2, `updated_at` = '2014-06-24 16:44:18' WHERE `users`.`id` = 2
+  [1m[36m (16.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 26ms (ActiveRecord: 18.6ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2014-06-24 18:44:18 +0200
+Processing by Admin::UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` ORDER BY `users`.`admin` DESC, `users`.`username` ASC LIMIT 100 OFFSET 0
+  Rendered admin/users/index.html.erb within layouts/application (8.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (0.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 21.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/admin/users/fulfillment" for 127.0.0.1 at 2014-06-24 18:44:20 +0200
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"fulfillment"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`slug` = 'fulfillment' ORDER BY `users`.`id` ASC LIMIT 1
+Redirected to http://localhost:3000/admin/users/fulfillment/edit
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/admin/users/fulfillment/edit" for 127.0.0.1 at 2014-06-24 18:44:20 +0200
+Processing by Admin::UsersController#edit as HTML
+  Parameters: {"id"=>"fulfillment"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`slug` = 'fulfillment' ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.6ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups`[0m
+  Rendered admin/users/edit.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 23ms (Views: 19.1ms | ActiveRecord: 1.4ms)
+
+
+Started PATCH "/admin/users/fulfillment" for 127.0.0.1 at 2014-06-24 18:44:23 +0200
+Processing by Admin::UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GJMtcE9zvxBKbFfOpAqh3o5BhTz4kUW+mEcoD36NtD0=", "user"=>{"username"=>"fulfillment", "email"=>"test@test.de", "store"=>"no store", "address"=>"no address", "storegroup_id"=>"2", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "locked"=>"0", "admin"=>"0", "fulfillment"=>"1"}, "commit"=>"Update User", "id"=>"fulfillment"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`slug` = 'fulfillment' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE (`users`.`username` = 'fulfillment' AND `users`.`id` != 4) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 AS one FROM `users` WHERE (`users`.`username` = 'fulfillment' AND `users`.`id` != 4) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `users` SET `storegroup_id` = 2, `updated_at` = '2014-06-24 16:44:23' WHERE `users`.`id` = 4[0m
+  [1m[35m (0.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/admin/users
+Completed 302 Found in 9ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/users" for 127.0.0.1 at 2014-06-24 18:44:23 +0200
+Processing by Admin::UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` ORDER BY `users`.`admin` DESC, `users`.`username` ASC LIMIT 100 OFFSET 0[0m
+  Rendered admin/users/index.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2014-06-24 18:44:25 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"GJMtcE9zvxBKbFfOpAqh3o5BhTz4kUW+mEcoD36NtD0="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 62ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-06-24 18:44:25 +0200
+Processing by PagesController#home as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:44:26 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/shared/_links.erb (0.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 29ms (Views: 27.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2014-06-24 18:44:30 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZWYgqGyzKxtjrH9yw/Hlo9+n70jIFG6oyWUs4rohTxk=", "user"=>{"username"=>"fulfillment", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`username` = 'fulfillment' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mUPDATE `users` SET `last_sign_in_at` = '2014-06-24 16:35:31', `current_sign_in_at` = '2014-06-24 16:44:30', `sign_in_count` = 3, `updated_at` = '2014-06-24 16:44:30' WHERE `users`.`id` = 4[0m
+  [1m[35m (0.7ms)[0m  COMMIT
+Redirected to http://localhost:3000/fulfillment
+Completed 302 Found in 91ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/fulfillment" for 127.0.0.1 at 2014-06-24 18:44:30 +0200
+Processing by Fulfillment::BaseController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 2
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 3
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1[0m
+  Rendered fulfillment/base/index.html.erb within layouts/application (12.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 27ms (Views: 22.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:44:33 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.4ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 60ms (Views: 0.6ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:45:13 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.5ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.4ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.7ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (1.6ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 183ms (Views: 0.6ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:45:35 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.2ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.6ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.6ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 125ms (Views: 0.6ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:48:02 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+Completed 500 Internal Server Error in 45ms
+
+SyntaxError (/Users/holger/Projekte/nordstrom/nordorder/app/pdfs/fulfillment/proforma_pdf.rb:59: unknown type of %string
+...{@order.created_at.strftime(%m%d%y)}", 'Net 30 days']]
+...                               ^
+/Users/holger/Projekte/nordstrom/nordorder/app/pdfs/fulfillment/proforma_pdf.rb:59: syntax error, unexpected end-of-input, expecting ')'
+...{@order.created_at.strftime(%m%d%y)}", 'Net 30 days']]
+...                               ^):
+  app/controllers/fulfillment/carts_controller.rb:8:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.8ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 18:48:28 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.3ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.5ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.6ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.5ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 125ms (Views: 0.6ms | ActiveRecord: 14.7ms)
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[35mCart Load (0.6ms)[0m  SELECT `carts`.* FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = self.user_id)
+Mysql2::Error: Unknown column 'self.user_id' in 'where clause': SELECT `carts`.* FROM `carts`  WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = self.user_id)
+  [1m[36mCart Load (0.9ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = self.user_id)[0m
+Mysql2::Error: Unknown column 'self.user_id' in 'where clause': SELECT `carts`.* FROM `carts`  WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = self.user_id)
+  [1m[35mCart Load (0.8ms)[0m  SELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1
+  [1m[36mCart Load (0.8ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = self.user_id)[0m
+Mysql2::Error: Unknown column 'self.user_id' in 'where clause': SELECT `carts`.* FROM `carts`  WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = self.user_id)
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[35mCart Load (0.6ms)[0m  SELECT `carts`.* FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = 2)
+  [1m[36mCart Load (0.8ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (created_at >= '2014-06-24 00:00:00') AND `carts`.`confirmed` = 1 AND (user_id = 2)[0m
+  [1m[36mCart Load (0.5ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[35mCart Load (0.6ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mCart Load (0.8ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[35mCart Load (0.9ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mCart Load (0.6ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` ORDER BY `carts`.`id` DESC LIMIT 1[0m
+  [1m[35mCart Load (0.6ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:06:26 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (1.3ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.7ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.9ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (1.1ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 171ms (Views: 0.6ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:09:19 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.5ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (1.1ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.7ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.6ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 172ms (Views: 0.6ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:09:34 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.8ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.7ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.5ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.7ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 179ms (Views: 0.6ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:13:32 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.4ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.8ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.6ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 186ms
+
+NameError (undefined local variable or method `pdf' for #<Fulfillment::ProformaPdf:0x007fdf6a9b8718>):
+  app/pdfs/fulfillment/proforma_pdf.rb:78:in `table_content'
+  app/pdfs/fulfillment/proforma_pdf.rb:13:in `block in initialize'
+  app/pdfs/fulfillment/proforma_pdf.rb:12:in `initialize'
+  app/controllers/fulfillment/carts_controller.rb:8:in `new'
+  app/controllers/fulfillment/carts_controller.rb:8:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.7ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:13:44 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.5ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (1.0ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.8ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.7ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.5ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.5ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 425ms (Views: 0.6ms | ActiveRecord: 255.1ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:14:01 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (1.0ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.7ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.6ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.4ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 224ms (Views: 0.6ms | ActiveRecord: 56.4ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:14:42 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.4ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (0.5ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.9ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.7ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 176ms (Views: 0.6ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:16:55 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.9ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.6ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.9ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.7ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 183ms (Views: 0.6ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:19:32 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (1.1ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.7ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (0.6ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.9ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.7ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 533ms (Views: 0.6ms | ActiveRecord: 286.1ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:19:54 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.9ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.7ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (1.1ms)
+Completed 200 OK in 145ms (Views: 0.9ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:22:21 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.6ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.7ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (0.7ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.8ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 2]]
+Completed 500 Internal Server Error in 112ms
+
+Prawn::Errors::InvalidTableData (data must be a two dimensional array of cellable objects):
+  app/pdfs/fulfillment/proforma_pdf.rb:72:in `table_content'
+  app/pdfs/fulfillment/proforma_pdf.rb:13:in `block in initialize'
+  app/pdfs/fulfillment/proforma_pdf.rb:12:in `initialize'
+  app/controllers/fulfillment/carts_controller.rb:8:in `new'
+  app/controllers/fulfillment/carts_controller.rb:8:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (62.6ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:22:45 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.6ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.6ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (1.0ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.5ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 185ms (Views: 0.6ms | ActiveRecord: 18.1ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:27:08 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+Completed 500 Internal Server Error in 42ms
+
+SyntaxError (/Users/holger/Projekte/nordstrom/nordorder/app/pdfs/fulfillment/proforma_pdf.rb:100: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/fulfillment/carts_controller.rb:8:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (48.7ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (64.3ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:27:51 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.5ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.2ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (0.5ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.7ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+Completed 500 Internal Server Error in 175ms
+
+NoMethodError (undefined method `move_right' for #<Fulfillment::ProformaPdf:0x007fdf6aa9ebf0>):
+  app/pdfs/fulfillment/proforma_pdf.rb:82:in `totals_table'
+  app/pdfs/fulfillment/proforma_pdf.rb:14:in `block in initialize'
+  app/pdfs/fulfillment/proforma_pdf.rb:12:in `initialize'
+  app/controllers/fulfillment/carts_controller.rb:8:in `new'
+  app/controllers/fulfillment/carts_controller.rb:8:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.9ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:28:56 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.6ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (1.0ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.8ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.6ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.8ms)
+Completed 200 OK in 134ms (Views: 0.6ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:30:31 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.6ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (1.1ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.6ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.5ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.6ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 183ms (Views: 0.6ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:31:07 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (0.8ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (0.5ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.8ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.6ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.7ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data proforma.pdf (0.7ms)
+Completed 200 OK in 187ms (Views: 0.6ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:35:45 +0200
+
+SyntaxError (/Users/holger/Projekte/nordstrom/nordorder/app/controllers/fulfillment/carts_controller.rb:9: syntax error, unexpected unary+, expecting keyword_end
+...ame: "INV"+ "%06d" % @cart.id +".pdf", type: 'application/pd...
+...                               ^
+/Users/holger/Projekte/nordstrom/nordorder/app/controllers/fulfillment/carts_controller.rb:9: syntax error, unexpected ',', expecting keyword_end
+...NV"+ "%06d" % @cart.id +".pdf", type: 'application/pdf'
+...                               ^):
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:424:in `load'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:424:in `block in load_file'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:616:in `new_constants_in'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:423:in `load_file'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:324:in `require_or_load'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:463:in `load_missing_constant'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:184:in `const_missing'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/inflector/methods.rb:228:in `const_get'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/inflector/methods.rb:228:in `block in constantize'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/inflector/methods.rb:224:in `each'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/inflector/methods.rb:224:in `inject'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/inflector/methods.rb:224:in `constantize'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:535:in `get'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/dependencies.rb:566:in `constantize'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:44:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:71:in `block in call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:59:in `each'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/journey/router.rb:59:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/routing/route_set.rb:680:in `call'
+  vendor/bundle/ruby/2.0.0/gems/warden-1.2.3/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/2.0.0/gems/warden-1.2.3/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/2.0.0/gems/warden-1.2.3/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/flash.rb:241:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  vendor/bundle/ruby/2.0.0/gems/activerecord-4.0.3/lib/active_record/query_cache.rb:36:in `call'
+  vendor/bundle/ruby/2.0.0/gems/activerecord-4.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  vendor/bundle/ruby/2.0.0/gems/activerecord-4.0.3/lib/active_record/migration.rb:369:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:373:in `_run__58891726371627248__call__callbacks'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/callbacks.rb:80:in `run_callbacks'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.0.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.0.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:25:in `tagged'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/tagged_logging.rb:67:in `tagged'
+  vendor/bundle/ruby/2.0.0/gems/railties-4.0.3/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.0.0/gems/activesupport-4.0.3/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/static.rb:64:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.0.0/gems/railties-4.0.3/lib/rails/engine.rb:511:in `call'
+  vendor/bundle/ruby/2.0.0/gems/railties-4.0.3/lib/rails/application.rb:97:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.0.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /Users/holger/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/holger/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/holger/.rvm/rubies/ruby-2.0.0-p451/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.1ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:37:00 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.6ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.5ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.6ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.5ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.6ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.6ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+Completed 500 Internal Server Error in 191ms
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  app/controllers/fulfillment/carts_controller.rb:9:in `block (2 levels) in show'
+  app/controllers/fulfillment/carts_controller.rb:5:in `show'
+
+
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.0ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered vendor/bundle/ruby/2.0.0/gems/actionpack-4.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.3ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:37:22 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35mStoregroup Load (1.0ms)[0m  SELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.7ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')[0m
+  [1m[35mLineItem Load (0.7ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)
+  [1m[36mProduct Load (0.5ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mLineItem Load (0.7ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data INV000005.pdf (0.7ms)
+Completed 200 OK in 185ms (Views: 0.6ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/fulfillment" for 127.0.0.1 at 2014-06-24 19:37:44 +0200
+Processing by Fulfillment::BaseController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 2[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 3[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 4[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 5[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1
+  Rendered fulfillment/base/index.html.erb within layouts/application (15.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 35ms (Views: 29.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/fulfillment" for 127.0.0.1 at 2014-06-24 19:37:44 +0200
+Processing by Fulfillment::BaseController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1[0m
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 0 AND `carts`.`confirmed` = 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.5ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 2
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 3
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 4
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  SELECT SUM(`line_items`.`quantity`) AS sum_id FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`status` = 1 AND `carts`.`confirmed` = 1[0m
+  Rendered fulfillment/base/index.html.erb within layouts/application (14.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 30ms (Views: 24.1ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/fulfillment/carts/5.pdf" for 127.0.0.1 at 2014-06-24 19:37:47 +0200
+Processing by Fulfillment::CartsController#show as PDF
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 4 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 5 LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 ORDER BY `users`.`id` ASC LIMIT 1
+  [1m[36mStoregroup Load (0.3ms)[0m  [1mSELECT `storegroups`.* FROM `storegroups` WHERE `storegroups`.`id` = 2 ORDER BY `storegroups`.`id` ASC LIMIT 1[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE (user_id = 2 AND created_at >= '2014-05-16 00:00:00' AND created_at <= '2014-05-16 23:59:59')
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5 AND (`line_items`.`quantity` != 0)[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1[0m
+  [1m[35mLineItem Load (0.7ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 5
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 4 ORDER BY `products`.`id` ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 2 ORDER BY `products`.`id` ASC LIMIT 1  [["id", 2]]
+  Rendered text template (0.0ms)
+Sent data INV000005.pdf (0.6ms)
+Completed 200 OK in 57ms (Views: 0.4ms | ActiveRecord: 3.4ms)

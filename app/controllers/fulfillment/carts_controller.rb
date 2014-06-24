@@ -6,7 +6,8 @@ class Fulfillment::CartsController < Fulfillment::BaseController
       format.html
       format.pdf do
         pdf = Fulfillment::ProformaPdf.new(@cart)
-        send_data pdf.render, filename: 'proforma.pdf', type: 'application/pdf'
+        filename = "INV" + "%06d" % @cart.id + ".pdf"
+        send_data pdf.render, filename: filename, type: 'application/pdf'
         #@cart.update_attribute :status, Cart::STATE_PROCESSING
       end
     end

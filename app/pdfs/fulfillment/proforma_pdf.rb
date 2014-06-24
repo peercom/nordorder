@@ -11,7 +11,8 @@ class Fulfillment::ProformaPdf < Prawn::Document
     header_right
     bounding_box([0, 350], :width => 540, :height => 200) do
       table_content
-    end
+      totals_table
+    end 
   end
   
   def logo_left
@@ -27,7 +28,7 @@ class Fulfillment::ProformaPdf < Prawn::Document
   end
   
   def ship_to
-    bounding_box([400, 550], :width => 270, :height => 100) do
+    bounding_box([270, 550], :width => 270, :height => 100) do
       text "Ship To:", size: 15, style: :bold
       text "Nordstrom #{@order.user.store}"
       text "#{@order.user.address}"
@@ -35,10 +36,12 @@ class Fulfillment::ProformaPdf < Prawn::Document
   end
   
   def bill_to
-    bounding_box([0, 550], :width => 270, :height => 100) do
+    bounding_box([0, 550], :width => 230, :height => 100) do
       text "Bill To:", size: 15, style: :bold
-      text "Nordstrom #{@order.user.store}"
-      text "#{@order.user.address}"
+      text "Nordstrom Stores #{@order.user.storegroup.name} #{@order.user.storegroup.area}"
+      text "Nordstrom Corp AP"
+      text "1700 7th ave suite 1000"
+      text "Seattle, WA 98 101"
     end
   end
   
@@ -54,7 +57,7 @@ class Fulfillment::ProformaPdf < Prawn::Document
   end
   
   def cust_data_rows
-    [['Customer ID', 'Customer PO', 'Payment Terms'], ['Nordstrom 001-012', 'NS.12120601', 'Net 30 days']]
+    [['Customer ID', 'Customer PO', 'Payment Terms'], ['Nordstrom 001-012', "#{@order.user.username}.#{@order.created_at.strftime('%m%d%y')}.#{@order.nth_order_for_day}", 'Net 30 days']]
   end
   
   def header_right
@@ -73,6 +76,22 @@ class Fulfillment::ProformaPdf < Prawn::Document
       self.row_colors = ['DDDDDD', 'FFFFFF']
       self.column_widths = [60, 60, 220, 100, 100]
     end
+  end
+  
+  def totals_table
+    indent 340 do
+      table totals_rows do
+        self.header = false
+        self.column_widths = [100,100]
+        row(2).font_style = :bold
+      end
+    end
+  end
+  
+  def totals_rows
+    [["Subtotal", "#{number_to_currency(@order.total_value)}"]] +
+    [["Sales Tax", "$0.00"]] +
+    [["TOTAL", "#{number_to_currency(@order.total_value)}"]]
   end
   
   def product_rows
