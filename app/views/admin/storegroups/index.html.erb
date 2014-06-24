@@ -1,0 +1,34 @@
+<h1>Store groups <small>Admin</small></h1>
+<p><%= link_to "Back to Admin", admin_root_path %></p>
+
+<div class="text-center">
+  <p><%= page_entries_info @storegroups %></p>
+  <%= paginate @storegroups %>
+</div>
+
+<%= form_tag admin_products_path, method: 'get', html: {role: "form"} do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil, class: "btn btn-sm btn-primary" %>
+    <%= link_to "All", admin_products_path, {class: "btn btn-sm btn-link"} %>
+  </p>
+<% end %>
+
+<table class="table table-striped">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Area</th>
+	<th>Actions</th>
+  </tr>
+  <% @storegroups.each do |storegroup| %>
+  <tr>
+  	<td><%= storegroup.id %></td>
+	<td><%= storegroup.name %></td>
+	<td><%= storegroup.area %></td>
+	<td><%= link_to 'Edit', edit_admin_storegroup_path(storegroup) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to "Create new storegroup", new_admin_storegroup_path %>

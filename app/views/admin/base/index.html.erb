@@ -6,6 +6,7 @@
 <div class="row">
   <div class="col-sm-4">
     <h3>Menu</h3>
+	<h4><%= link_to "Store groups", admin_storegroups_path %> <small>- <%="#{Storegroup.count} store groups"%></small></h4>
     <h4><%= link_to "Users", admin_users_path %> <small>- <%= "#{User.count} users" %></small></h4>
 	<h4><%= link_to "Products", admin_products_path %> <small>- <%= Product.count%> products</small></h4>
     <hr/>

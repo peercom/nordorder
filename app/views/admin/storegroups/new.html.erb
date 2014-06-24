@@ -1,0 +1,29 @@
+<% title("Add store group") %>
+<h1>Create Store group <small>Admin</small></h1>
+<p><%= link_to "Back to Store groups", admin_storegroups_path %></p>
+
+<%= form_for([:admin, @storegroup], :html => { :role => "form" }) do |f| %>
+	<div class="form-group">
+		<%= f.label :name %>
+		<div class="row">
+        	<div class="col-sm-6">
+				<%= f.text_field :name %>
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :area %>
+		<div class="row">
+        	<div class="col-sm-6">
+				<%= f.text_field :area %>
+			</div>
+		</div>
+	</div>
+	
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.submit "Create Store group", class: "btn btn-danger" %>
+      </div>
+    </div>
+	
+<% end %>

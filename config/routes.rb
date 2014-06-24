@@ -10,6 +10,7 @@ Nordorder::Application.routes.draw do
     root "base#index"
     resources :users
     resources :products
+    resources :storegroups
   end
   
   namespace :fulfillment do

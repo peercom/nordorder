@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428132613) do
+ActiveRecord::Schema.define(version: 20140624144846) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(version: 20140428132613) do
     t.string   "sku"
   end
 
+  create_table "storegroups", force: true do |t|
+    t.string   "name"
+    t.string   "area"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username",               default: "",    null: false
     t.string   "email",                  default: "",    null: false
@@ -75,6 +82,7 @@ ActiveRecord::Schema.define(version: 20140428132613) do
     t.string   "store"
     t.string   "address"
     t.boolean  "fulfillment",            default: false
+    t.integer  "storegroup_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

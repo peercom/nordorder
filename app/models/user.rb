@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   
   has_many :carts 
-  attr_accessible :username, :email, :store, :address, :password, :password_confirmation, :locked, :admin, :fulfillment
+  belongs_to :storegroup
+  attr_accessible :username, :email, :store, :address, :password, :password_confirmation, :locked, :admin, :fulfillment, :storegroup_id
+  
   
   # Use friendly_id on Users
   extend FriendlyId
