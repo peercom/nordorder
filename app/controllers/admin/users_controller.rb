@@ -47,6 +47,7 @@ class Admin::UsersController < Admin::BaseController
     @user.address = new_params[:address]
     @user.store = new_params[:store]
     @user.email = new_params[:email]
+    @user.storegroup_id = new_params[:storegroup_id]
     @user.password = new_params[:password] if new_params[:password].strip.length > 0
     @user.password_confirmation = new_params[:password_confirmation] if new_params[:password_confirmation].strip.length > 0
     
@@ -83,7 +84,9 @@ class Admin::UsersController < Admin::BaseController
     :password,
     :password_confirmation,
     :admin,
-    :locked
+    :locked,
+    :storegroup_id,
+    :fulfillment
     )
   end
   

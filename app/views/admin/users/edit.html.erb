@@ -47,7 +47,7 @@
       <%= f.label :storegroup %>
       <div class="row">
         <div class="col-sm-6">
-          <%= f.select :storegroup_id, options_from_collection_for_select(Storegroup.all, 'id', 'name') %>  
+          <%= f.select :storegroup_id, options_from_collection_for_select(Storegroup.all, 'id', 'name', @user.storegroup_id), :prompt => "Select one" %>  
         </div>
       </div>
     </div>
